@@ -6,7 +6,7 @@
         "name": "Stanislav Kalashnik",
         "email": "sk@infomir.eu"
     },
-    "repository": "stbsdk/app",
+    "repository": "spasdk/app",
     "scripts": {
         "lint": "eslint *.js",
         "jsdoc": "jsdoc --destination doc *.js readme.md"
@@ -18,11 +18,8 @@
     },
     "devDependencies": {},
     "keywords": [
-        "stb",
-        "sdk",
-        "device",
-        "tv",
-        "devkit",
+        "spa",
+        "spasdk",
         "framework",
         "app",
         "core"
