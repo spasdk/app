@@ -16,7 +16,6 @@
         "spa-router": "spasdk/router",
         "spa-keys": "spasdk/keys"
     },
-    "devDependencies": {},
     "keywords": [
         "spa",
         "spasdk",
