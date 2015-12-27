@@ -13,8 +13,8 @@
     },
     "dependencies": {
         "cjs-model": "1.*.*",
-        "spa-router": "1.*.*",
-        "spa-keys": "1.*.*"
+        "spa-router": "spasdk/router",
+        "spa-keys": "spasdk/keys"
     },
     "devDependencies": {},
     "keywords": [
