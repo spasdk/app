@@ -9,7 +9,7 @@ var Model    = require('cjs-model'),
     router   = require('spa-router'),
     //keys     = require('spa-keys'),
     //metrics  = require('../../../config/metrics'),
-    keyCodes = {},
+    //keyCodes = {},
     app, key;
 
 
@@ -80,57 +80,57 @@ app = new Model({
 });
 
 
-/**
- * Set crops, total, content size and link the corresponding CSS file.
- *
- * @param {Object} metrics screen params specific to resolution
- *
- * @return {boolean} operation status
- */
-app.setScreen = function ( metrics ) {
-    var linkCSS;
-
-    if ( DEBUG ) {
-        if ( arguments.length !== 1 ) { throw new Error(__filename + ': wrong arguments number'); }
-    }
-
-    if ( metrics ) {
-        if ( DEBUG ) {
-            if ( typeof metrics !== 'object' ) { throw new Error(__filename + ': wrong metrics type'); }
-        }
-
-        // calculate and extend
-        metrics.availHeight = metrics.height - (metrics.availTop + metrics.availBottom);
-        metrics.availWidth  = metrics.width - (metrics.availLeft + metrics.availRight);
-
-        // set max browser window size
-        window.moveTo(0, 0);
-        window.resizeTo(metrics.width, metrics.height);
-
-        // get the link tag
-        linkCSS = document.querySelector('link[rel=stylesheet]');
-
-        // already was initialized
-        if ( linkCSS && linkCSS instanceof HTMLLinkElement ) {
-            // remove all current CSS styles
-            document.head.removeChild(linkCSS);
-        }
-
-        // load CSS file base on resolution
-        linkCSS = document.createElement('link');
-        linkCSS.rel  = 'stylesheet';
-        linkCSS.href = 'css/' + (DEBUG ? 'develop.' : 'release.') + metrics.height + '.css?' + +new Date();
-        document.head.appendChild(linkCSS);
-
-        // provide global access
-        this.data.metrics = metrics;
-
-        return true;
-    }
-
-    // nothing has applied
-    return false;
-};
+///**
+// * Set crops, total, content size and link the corresponding CSS file.
+// *
+// * @param {Object} metrics screen params specific to resolution
+// *
+// * @return {boolean} operation status
+// */
+//app.setScreen = function ( metrics ) {
+//    var linkCSS;
+//
+//    if ( DEBUG ) {
+//        if ( arguments.length !== 1 ) { throw new Error(__filename + ': wrong arguments number'); }
+//    }
+//
+//    if ( metrics ) {
+//        if ( DEBUG ) {
+//            if ( typeof metrics !== 'object' ) { throw new Error(__filename + ': wrong metrics type'); }
+//        }
+//
+//        // calculate and extend
+//        metrics.availHeight = metrics.height - (metrics.availTop + metrics.availBottom);
+//        metrics.availWidth  = metrics.width - (metrics.availLeft + metrics.availRight);
+//
+//        // set max browser window size
+//        window.moveTo(0, 0);
+//        window.resizeTo(metrics.width, metrics.height);
+//
+//        // get the link tag
+//        linkCSS = document.querySelector('link[rel=stylesheet]');
+//
+//        // already was initialized
+//        if ( linkCSS && linkCSS instanceof HTMLLinkElement ) {
+//            // remove all current CSS styles
+//            document.head.removeChild(linkCSS);
+//        }
+//
+//        // load CSS file base on resolution
+//        linkCSS = document.createElement('link');
+//        linkCSS.rel  = 'stylesheet';
+//        linkCSS.href = 'css/' + (DEBUG ? 'develop.' : 'release.') + metrics.height + '.css?' + +new Date();
+//        document.head.appendChild(linkCSS);
+//
+//        // provide global access
+//        this.data.metrics = metrics;
+//
+//        return true;
+//    }
+//
+//    // nothing has applied
+//    return false;
+//};
 
 // define events constants
 
@@ -444,10 +444,10 @@ app.defaultEvents = {
             }
         }
 
-        // suppress non-printable keys in stb device (not in your browser)
-        if ( app.data.host && keyCodes[event.code] ) {
-            event.preventDefault();
-        }
+        //// suppress non-printable keys in stb device (not in your browser)
+        //if ( app.data.host && keyCodes[event.code] ) {
+        //    event.preventDefault();
+        //}
     },
 
     /**
