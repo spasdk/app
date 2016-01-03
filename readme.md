@@ -29,12 +29,9 @@ var app = require('spa-app');
 
 At run-time has the following attributes:
 
- Name               | Description
---------------------|-------------
- ~~app.data.debug~~ | ~~Enable logging and debugging flag set by debug module~~
- app.data.screen    | Screen geometry and margins.
- app.data.time      | Different timestamps marks.
-
+ Name          | Description
+---------------|-------------
+ app.data.time | Different timestamps marks.
 
 
 ## Debug mode ##
