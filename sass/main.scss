@@ -27,12 +27,3 @@ table {
 .maxh { height: 100% }
 .maxw { width:  100% }
 a { text-decoration: none }
-
-
-/**********************/
-/* current SPA styles */
-/**********************/
-
-// "less" directory is resolved by gulp less task to
-// path.join(process.env.PATH_ROOT, process.env.PATH_SRC, 'less')
-//@import "less/main";
