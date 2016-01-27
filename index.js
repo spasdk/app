@@ -317,5 +317,11 @@ Object.keys(app.defaultEvents).forEach(function ( name ) {
 });
 
 
+// activate development mechanisms and tools
+if ( DEVELOP ) {
+    require('spa-develop');
+}
+
+
 // public
 module.exports = app;
