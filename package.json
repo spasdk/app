@@ -13,7 +13,7 @@
     },
     "dependencies": {
         "cjs-model": "1.*.*",
-        "spa-develop": "1.*.*",
+        "spa-develop": "spasdk/develop",
         "spa-router": "spasdk/router"
     },
     "keywords": [
