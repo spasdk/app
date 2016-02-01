@@ -5,16 +5,12 @@
 
 'use strict';
 
-var Model  = require('cjs-model'),
-    router = require('spa-router'),
-    app;
+var Emitter = require('cjs-emitter'),
+    router  = require('spa-router'),
+    app     = new Emitter();
 
 
-/**
- * @instance
- * @type {Model}
- */
-app = new Model({
+app.data = {
     /**
      * Timestamps data.
      *
@@ -28,7 +24,7 @@ app = new Model({
         load: 0,
         done: 0
     }
-});
+};
 
 
 app.defaultEvents = {
