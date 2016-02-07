@@ -6,10 +6,7 @@
         "name": "Stanislav Kalashnik",
         "email": "darkpark.main@gmail.com"
     },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/spasdk/app.git"
-    },
+    "repository": "spasdk/app",
     "scripts": {
         "lint": "eslint *.js",
         "jsdoc": "jsdoc --destination doc *.js readme.md"
