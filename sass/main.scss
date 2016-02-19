@@ -1,9 +1,7 @@
 // @author Stanislav Kalashnik <darkpark.main@gmail.com>
 // @license GNU GENERAL PUBLIC LICENSE Version 3
 
-/**********************/
-/* general SPA styles */
-/**********************/
+/* spa-app: production */
 
 html, body {
     width:    $width;
@@ -19,11 +17,21 @@ table {
     border-collapse: collapse;
     border-spacing:  0;
     td {
-        padding: 0
+        padding: 0;
     }
 }
 
 // meta-classes
 .maxh { height: 100% }
 .maxw { width:  100% }
-a { text-decoration: none }
+a { text-decoration: none; }
+
+
+/* spa-app: development */
+
+@if $DEVELOP {
+    body.develop {
+        outline: 1px dashed #005000;
+        outline-offset: 1px;
+    }
+}
