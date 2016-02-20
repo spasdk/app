@@ -143,14 +143,14 @@ app.defaultEvents = {
         }
 
         // filter phantoms
-        if ( event.keyCode === 0 ) { return; }
+        //if ( event.keyCode === 0 ) { return; }
 
         // combined key code
-        event.code = event.keyCode;
+        //event.code = event.keyCode;
 
         // apply key modifiers
-        if ( event.shiftKey ) { event.code += 1000; }
-        if ( event.altKey )   { event.code += 2000; }
+        //if ( event.shiftKey ) { event.code += 1000; }
+        //if ( event.altKey )   { event.code += 2000; }
 
         debug.event(event);
 
