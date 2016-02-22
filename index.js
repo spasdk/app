@@ -9,6 +9,7 @@
 
 var Emitter = require('cjs-emitter'),
     router  = require('spa-router'),
+    parse   = require('cjs-parse-query'),
     app     = new Emitter();
 
 
@@ -25,7 +26,10 @@ app.data = {
         init: +new Date(),
         load: 0,
         done: 0
-    }
+    },
+
+    // parameters from get request
+    query: parse(document.location.search.substring(1))
 };
 
 

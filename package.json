@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "cjs-emitter": "1.*.*",
+        "cjs-parse-query": "1.*.*",
         "spa-develop": "spasdk/develop",
         "spa-router": "spasdk/router"
     },
