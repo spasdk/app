@@ -1,7 +1,7 @@
 // @author Stanislav Kalashnik <darkpark.main@gmail.com>
 // @license GNU GENERAL PUBLIC LICENSE Version 3
 
-/* spa-app: production */
+/* spa-app: release */
 
 html, body {
     width:    $width;
@@ -27,7 +27,7 @@ table {
 a { text-decoration: none; }
 
 
-/* spa-app: development */
+/* spa-app: develop */
 
 @if $DEVELOP {
     body.develop {
