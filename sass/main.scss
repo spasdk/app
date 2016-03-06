@@ -3,10 +3,13 @@
 
 /* spa-app: release */
 html, body {
-    height:   100%;
-    overflow: hidden;
-    margin:   0;
-    padding:  0;
+    height:      $height;
+    width:       $width;
+    font-size:   $fontSize;
+    font-family: $fontFamily;
+    overflow:    hidden;
+    margin:      0;
+    padding:     0;
 }
 
 // table cell spacing/padding reset
