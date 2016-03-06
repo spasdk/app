@@ -1,6 +1,9 @@
 /* spa-app: release */
 html, body {
     height: 100%;
+    width: 100%;
+    font-size: 15px;
+    font-family: arial, sans-serif;
     overflow: hidden;
     margin: 0;
     padding: 0; }
