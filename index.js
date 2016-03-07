@@ -13,6 +13,15 @@ var Emitter = require('cjs-emitter'),
     app     = new Emitter();
 
 
+// public
+module.exports = app;
+
+
+// global application configuration
+// in config.js file in js root
+app.config = require('app:config');
+
+
 app.data = {
     /**
      * Timestamps data.
@@ -323,7 +332,3 @@ Object.keys(app.defaultEvents).forEach(function ( name ) {
 if ( DEVELOP ) {
     require('spa-develop');
 }
-
-
-// public
-module.exports = app;
