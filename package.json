@@ -18,6 +18,9 @@
         "spa-develop": "spasdk/develop",
         "spa-router": "spasdk/router"
     },
+    "devDependencies": {
+        "spa-eslint-config": "spasdk/eslint-config"
+    },
     "keywords": [
         "spa",
         "spasdk",
