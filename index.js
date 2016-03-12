@@ -8,7 +8,7 @@
 'use strict';
 
 var Emitter = require('cjs-emitter'),
-    router  = require('spa-router'),
+    //router  = require('spa-router'),
     parse   = require('cjs-parse-query'),
     app     = new Emitter();
 
@@ -22,27 +22,158 @@ module.exports = app;
 app.config = require('app:config');
 
 
-app.data = {
-    /**
+// url request params
+app.query = parse(document.location.search.substring(1));
+
+
+/*app.data = {
+    /!**
      * Timestamps data.
      *
      * @type {Object}
      * @property {number} init application initialization time (right now)
      * @property {number} load document onload event
      * @property {number} done onload event sent and processed
-     */
-    time: {
-        init: +new Date(),
-        load: 0,
-        done: 0
-    },
+     *!/
+    // time: {
+    //     init: +new Date(),
+    //     load: 0,
+    //     done: 0
+    // }
 
     // parameters from get request
-    query: parse(document.location.search.substring(1))
+    //query: parse(document.location.search.substring(1))
+};*/
+
+
+app.activePage = null;
+
+
+/**
+ * Make the given inactive/hidden page active/visible.
+ * Pass some data to the page and trigger the corresponding event.
+ *
+ * @param {Page} page item to show
+ * @param {*} [data] data to send to page
+ *
+ * @return {boolean} operation status
+ */
+function show ( page, data ) {
+    // page available and can be hidden
+    if ( page && !page.active ) {
+        // apply visibility
+        page.$node.classList.add('active');
+        page.active = true;
+        app.activePage = page;
+
+        // there are some listeners
+        if ( page.events['show'] ) {
+            // notify listeners
+            page.emit('show', {page: page, data: data});
+        }
+
+        debug.log('component ' + page.constructor.name + '.' + page.id + ' show', 'green');
+
+        return true;
+    }
+
+    // nothing was done
+    return false;
+}
+
+
+/**
+ * Make the given active/visible page inactive/hidden and trigger the corresponding event.
+ *
+ * @param {Page} page item to hide
+ *
+ * @return {boolean} operation status
+ */
+function hide ( page ) {
+    // page available and can be hidden
+    if ( page && page.active ) {
+        // apply visibility
+        page.$node.classList.remove('active');
+        page.active  = false;
+        app.activePage = null;
+
+        // there are some listeners
+        if ( page.events['hide'] ) {
+            // notify listeners
+            page.emit('hide', {page: page});
+        }
+
+        debug.log('component ' + page.constructor.name + '.' + page.id + ' hide', 'grey');
+
+        return true;
+    }
+
+    // nothing was done
+    return false;
+}
+
+
+/**
+ * Browse to a given page.
+ * Do nothing if the link is invalid. Otherwise hide the current, show new and update the "previous" link.
+ *
+ * @param {Page} pageTo instance of the page to show
+ * @param {*} [data] options to pass to the page on show
+ *
+ * @return {boolean} operation status
+ */
+app.route = function ( pageTo, data ) {
+    var pageFrom = app.activePage;
+
+    if ( DEBUG ) {
+        //if ( router.pages.length > 0 ) {
+            if ( !pageTo || typeof pageTo !== 'object' ) { throw new Error(__filename + ': wrong pageTo type'); }
+            if ( !('active' in pageTo) ) { throw new Error(__filename + ': missing field "active" in pageTo'); }
+        //}
+    }
+
+    // valid not already active page
+    if ( pageTo && !pageTo.active ) {
+        debug.log('router.navigate: ' + pageTo.id, pageTo === pageFrom ? 'grey' : 'green');
+
+        // update url
+        //location.hash = this.stringify(name, data);
+
+        // apply visibility
+        hide(app.activePage);
+        show(pageTo, data);
+
+        // there are some listeners
+        if ( this.events['route'] ) {
+            // notify listeners
+            this.emit('route', {from: pageFrom, to: pageTo});
+        }
+
+        // store
+        //this.history.push(pageTo);
+
+        return true;
+    }
+
+    debug.log('router.navigate: ' + pageTo.id, 'red');
+
+    // nothing was done
+    return false;
 };
 
 
 app.defaultEvents = {
+    DOMContentLoaded: function ( event ) {
+        debug.event(event);
+
+        // there are some listeners
+        if ( app.events['dom'] ) {
+            // notify listeners
+            app.emit('dom', event);
+            console.log('DOMContentLoaded');
+        }
+    },
+
     /**
      * The load event is fired when a resource and its dependent resources have finished loading.
      *
@@ -61,7 +192,7 @@ app.defaultEvents = {
         debug.event(event);
 
         // time mark
-        app.data.time.load = event.timeStamp;
+        //app.data.time.load = event.timeStamp;
 
         // global handler
         // there are some listeners
@@ -71,7 +202,7 @@ app.defaultEvents = {
         }
 
         // local handler on each page
-        router.pages.forEach(function forEachPages ( page ) {
+        /*router.pages.forEach(function forEachPages ( page ) {
             debug.log('component ' + page.constructor.name + '.' + page.id + ' load', 'green');
 
             // there are some listeners
@@ -79,17 +210,17 @@ app.defaultEvents = {
                 // notify listeners
                 page.emit(event.type, event);
             }
-        });
+        });*/
 
         // time mark
-        app.data.time.done = +new Date();
+        //app.data.time.done = +new Date();
 
         // everything is ready
         // and there are some listeners
-        if ( app.events['done'] ) {
-            // notify listeners
-            app.emit('done', event);
-        }
+        // if ( app.events['done'] ) {
+        //     // notify listeners
+        //     app.emit('done', event);
+        // }
     },
 
     /**
@@ -114,7 +245,7 @@ app.defaultEvents = {
         }
 
         // local handler on each page
-        router.pages.forEach(function forEachPages ( page ) {
+        /*router.pages.forEach(function forEachPages ( page ) {
             debug.log('component ' + page.constructor.name + '.' + page.id + ' unload', 'red');
 
             // there are some listeners
@@ -122,7 +253,7 @@ app.defaultEvents = {
                 // notify listeners
                 page.emit(event.type, event);
             }
-        });
+        });*/
     },
 
     /**
@@ -150,7 +281,7 @@ app.defaultEvents = {
      * @param {Event} event generated object with event data
      */
     keydown: function ( event ) {
-        var page = router.current,
+        var page = app.activePage,
             activeComponent;
 
         if ( DEBUG ) {
@@ -225,7 +356,7 @@ app.defaultEvents = {
      * @param {string} event.char entered character
      */
     keypress: function ( event ) {
-        var page = router.current;
+        var page = app.activePage;
 
         if ( DEBUG ) {
             if ( page === null || page === undefined ) { throw new Error(__filename + ': app should have at least one page'); }
@@ -293,7 +424,7 @@ app.defaultEvents = {
      * @param {Event} event generated object with event data
      */
     mousewheel: function ( event ) {
-        var page = router.current;
+        var page = app.activePage;
 
         if ( DEBUG ) {
             if ( page === null || page === undefined ) { throw new Error(__filename + ': app should have at least one page'); }
