@@ -15,8 +15,7 @@
     "dependencies": {
         "cjs-emitter": "cjssdk/emitter",
         "cjs-parse-query": "cjssdk/parse-query",
-        "spa-develop": "spasdk/develop",
-        "spa-router": "spasdk/router"
+        "spa-develop": "spasdk/develop"
     },
     "devDependencies": {
         "spa-eslint-config": "spasdk/eslint-config"
