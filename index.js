@@ -311,15 +311,16 @@ app.defaultEvents = {
                 activeComponent.emit(event.type, event);
             }
 
+            // todo: bubble event recursively
             // bubbling
-            if (
+            /*if (
                 !event.stop &&
                 activeComponent.propagate &&
                 activeComponent.parent &&
                 activeComponent.parent.events[event.type]
             ) {
                 activeComponent.parent.emit(event.type, event);
-            }
+            }*/
         }
 
         // page handler
