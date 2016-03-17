@@ -125,7 +125,7 @@ function hide ( page ) {
 app.route = function ( pageTo, data ) {
     var pageFrom = app.activePage;
 
-    if ( DEBUG ) {
+    if ( DEVELOP ) {
         //if ( router.pages.length > 0 ) {
             if ( !pageTo || typeof pageTo !== 'object' ) { throw new Error(__filename + ': wrong pageTo type'); }
             if ( !('active' in pageTo) ) { throw new Error(__filename + ': missing field "active" in pageTo'); }
@@ -284,7 +284,7 @@ app.defaultEvents = {
         var page = app.activePage,
             activeComponent;
 
-        if ( DEBUG ) {
+        if ( DEVELOP ) {
             if ( !page ) { throw new Error(__filename + ': app should have at least one page'); }
         }
 
@@ -359,7 +359,7 @@ app.defaultEvents = {
     keypress: function ( event ) {
         var page = app.activePage;
 
-        if ( DEBUG ) {
+        if ( DEVELOP ) {
             if ( page === null || page === undefined ) { throw new Error(__filename + ': app should have at least one page'); }
         }
 
@@ -411,7 +411,7 @@ app.defaultEvents = {
 
         //document.dispatchEvent(kbEvent);
 
-        if ( !DEBUG ) {
+        if ( !DEVELOP ) {
             // disable right click in release mode
             event.preventDefault();
         }
@@ -427,7 +427,7 @@ app.defaultEvents = {
     mousewheel: function ( event ) {
         var page = app.activePage;
 
-        if ( DEBUG ) {
+        if ( DEVELOP ) {
             if ( page === null || page === undefined ) { throw new Error(__filename + ': app should have at least one page'); }
         }
 
