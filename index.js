@@ -9,7 +9,7 @@
 
 var Emitter = require('cjs-emitter'),
     //router  = require('spa-router'),
-    parse   = require('cjs-parse-query'),
+    parse   = require('cjs-query').parse,
     app     = new Emitter();
 
 
