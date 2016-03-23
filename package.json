@@ -14,8 +14,7 @@
     },
     "dependencies": {
         "cjs-emitter": "cjssdk/emitter",
-        "cjs-query": "cjssdk/query",
-        "spa-develop": "spasdk/develop"
+        "cjs-query": "cjssdk/query"
     },
     "devDependencies": {
         "spa-eslint-config": "spasdk/eslint-config"

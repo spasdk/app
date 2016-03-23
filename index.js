@@ -21,15 +21,18 @@ module.exports = app;
 if ( DEVELOP ) {
     // public app instance
     window.app = app;
-    
+
     // all development tools placeholder
     app.develop = {};
-    
+
     // browser logging
     window.console = require('./lib/develop/console');
+    window.debug   = require('./lib/develop/debug');
 
     // tools
     require('./lib/develop/events');
+    require('./lib/develop/hooks');
+    require('./lib/develop/static');
 }
 
 
@@ -486,9 +489,3 @@ app.defaultEvents = {
 Object.keys(app.defaultEvents).forEach(function ( name ) {
     window.addEventListener(name, app.defaultEvents[name]);
 });
-
-
-// activate development mechanisms and tools
-if ( DEVELOP ) {
-    require('spa-develop');
-}
