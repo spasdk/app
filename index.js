@@ -17,32 +17,19 @@ var Emitter = require('cjs-emitter'),
 module.exports = app;
 
 
+// url request params
+app.query = parse(document.location.search.substring(1));
+
+
 // activate development mechanisms and tools
 if ( DEVELOP ) {
-    // public app instance
-    window.app = app;
-
-    // all development tools placeholder
-    app.develop = {};
-
-    // browser logging
-    window.console = require('./lib/develop/console');
-    window.debug   = require('./lib/develop/debug');
-
-    // tools
-    require('./lib/develop/events');
-    require('./lib/develop/hooks');
-    require('./lib/develop/static');
+    require('./lib/develop/main');
 }
 
 
 // global application configuration
 // in config.js file in js root
 app.config = require('app:config');
-
-
-// url request params
-app.query = parse(document.location.search.substring(1));
 
 
 /*app.data = {
