@@ -72,14 +72,16 @@ function show ( page, data ) {
         page.active = true;
         app.activePage = page;
 
+        debug.info('show component ' + page.constructor.name + '#' + page.id, null, {
+            tags: ['show', 'component', page.constructor.name, page.id]
+        });
+        //console.log('component ' + page.constructor.name + '.' + page.id + ' show', 'green');
+
         // there are some listeners
         if ( page.events['show'] ) {
             // notify listeners
             page.emit('show', {page: page, data: data});
         }
-
-        //debug.log('component ' + page.constructor.name + '.' + page.id + ' show', 'green');
-        console.log('component ' + page.constructor.name + '.' + page.id + ' show', 'green');
 
         return true;
     }
@@ -104,14 +106,16 @@ function hide ( page ) {
         page.active  = false;
         app.activePage = null;
 
+        debug.info('hide component ' + page.constructor.name + '#' + page.id, null, {
+            tags: ['hide', 'component', page.constructor.name, page.id]
+        });
+        //console.log('component ' + page.constructor.name + '.' + page.id + ' hide', 'grey');
+
         // there are some listeners
         if ( page.events['hide'] ) {
             // notify listeners
             page.emit('hide', {page: page});
         }
-
-        //debug.log('component ' + page.constructor.name + '.' + page.id + ' hide', 'grey');
-        console.log('component ' + page.constructor.name + '.' + page.id + ' hide', 'grey');
 
         return true;
     }
@@ -143,7 +147,7 @@ app.route = function ( pageTo, data ) {
     // valid not already active page
     if ( pageTo && !pageTo.active ) {
         //debug.log('router.navigate: ' + pageTo.id, pageTo === pageFrom ? 'grey' : 'green');
-        console.log('router.navigate: ' + pageTo.id, pageTo === pageFrom ? 'grey' : 'green');
+        debug.info('app route: ' + pageTo.id, null, {tags: ['route', 'page', pageTo.id]});
 
         // update url
         //location.hash = this.stringify(name, data);
@@ -164,8 +168,8 @@ app.route = function ( pageTo, data ) {
         return true;
     }
 
-    //debug.log('router.navigate: ' + pageTo.id, 'red');
-    console.log('router.navigate: ' + pageTo.id, 'red');
+    debug.warn('invalid page to route: ' + pageTo.id, null, {tags: ['route', 'page', pageTo.id]});
+    //console.log('router.navigate: ' + pageTo.id, 'red');
 
     // nothing was done
     return false;
@@ -175,13 +179,15 @@ app.route = function ( pageTo, data ) {
 app.defaultEvents = {
     DOMContentLoaded: function ( event ) {
         //debug.event(event);
-        console.log(event);
+        //console.log(event);
+
+        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
 
         // there are some listeners
         if ( app.events['dom'] ) {
             // notify listeners
             app.emit('dom', event);
-            console.log('DOMContentLoaded');
+            //console.log('DOMContentLoaded');
         }
     },
 
@@ -201,10 +207,12 @@ app.defaultEvents = {
         //var path;
 
         //debug.event(event);
-        console.log(event);
+        //console.log(event);
 
         // time mark
         //app.data.time.load = event.timeStamp;
+
+        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
 
         // global handler
         // there are some listeners
@@ -250,6 +258,8 @@ app.defaultEvents = {
         //debug.event(event);
         console.log(event);
 
+        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
+
         // global handler
         // there are some listeners
         if ( app.events[event.type] ) {
@@ -278,7 +288,8 @@ app.defaultEvents = {
      */
     error: function ( event ) {
         //debug.event(event);
-        console.log(event);
+        //console.log(event);
+        debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
     },
 
     /**
@@ -313,7 +324,8 @@ app.defaultEvents = {
         //if ( event.altKey )   { event.code += 2000; }
 
         //debug.event(event);
-        console.log(event);
+        //console.log(event);
+        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
 
         // page.activeComponent can be set to null in event handles
         activeComponent = page.activeComponent;
@@ -379,6 +391,7 @@ app.defaultEvents = {
         }
 
         //debug.event(event);
+        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
 
         // current component handler
         if ( page.activeComponent && page.activeComponent !== page ) {
@@ -399,7 +412,8 @@ app.defaultEvents = {
      */
     click: function ( event ) {
         //debug.event(event);
-        console.log(event);
+        //console.log(event);
+        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
     },
 
     /**
@@ -415,7 +429,8 @@ app.defaultEvents = {
         //var kbEvent = {}; //Object.create(document.createEvent('KeyboardEvent'));
 
         //debug.event(event);
-        console.log(event);
+        //console.log(event);
+        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
 
         //kbEvent.type    = 'keydown';
         //kbEvent.keyCode = 8;
@@ -449,7 +464,8 @@ app.defaultEvents = {
         }
 
         //debug.event(event);
-        console.log(event);
+        //console.log(event);
+        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
 
         // current component handler
         if ( page.activeComponent && page.activeComponent !== page ) {
