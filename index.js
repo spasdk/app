@@ -181,7 +181,7 @@ app.defaultEvents = {
         //debug.event(event);
         //console.log(event);
 
-        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
+        debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
 
         // there are some listeners
         if ( app.events['dom'] ) {
@@ -212,7 +212,7 @@ app.defaultEvents = {
         // time mark
         //app.data.time.load = event.timeStamp;
 
-        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
+        debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
 
         // global handler
         // there are some listeners
@@ -258,7 +258,7 @@ app.defaultEvents = {
         //debug.event(event);
         console.log(event);
 
-        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
+        debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
 
         // global handler
         // there are some listeners
@@ -289,7 +289,7 @@ app.defaultEvents = {
     error: function ( event ) {
         //debug.event(event);
         //console.log(event);
-        debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
+        debug.fail('app event: ' + event.message, event, {tags: [event.type, 'event']});
     },
 
     /**
@@ -325,7 +325,7 @@ app.defaultEvents = {
 
         //debug.event(event);
         //console.log(event);
-        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
+        debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
 
         // page.activeComponent can be set to null in event handles
         activeComponent = page.activeComponent;
@@ -391,7 +391,7 @@ app.defaultEvents = {
         }
 
         //debug.event(event);
-        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
+        debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
 
         // current component handler
         if ( page.activeComponent && page.activeComponent !== page ) {
@@ -413,7 +413,7 @@ app.defaultEvents = {
     click: function ( event ) {
         //debug.event(event);
         //console.log(event);
-        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
+        debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
     },
 
     /**
@@ -430,7 +430,7 @@ app.defaultEvents = {
 
         //debug.event(event);
         //console.log(event);
-        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
+        debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
 
         //kbEvent.type    = 'keydown';
         //kbEvent.keyCode = 8;
@@ -465,7 +465,7 @@ app.defaultEvents = {
 
         //debug.event(event);
         //console.log(event);
-        debug.info('app event: ' + event.type, null, {tags: [event.type, 'event']});
+        debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
 
         // current component handler
         if ( page.activeComponent && page.activeComponent !== page ) {
