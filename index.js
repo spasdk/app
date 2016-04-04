@@ -410,11 +410,11 @@ app.defaultEvents = {
      *
      * @param {Event} event generated object with event data
      */
-    click: function ( event ) {
+    /*click: function ( event ) {
         //debug.event(event);
         //console.log(event);
         debug.info('app event: ' + event.type, event, {tags: [event.type, 'event']});
-    },
+    },*/
 
     /**
      * The contextmenu event is fired when the right button of the mouse is clicked (before the context menu is displayed),
@@ -425,7 +425,7 @@ app.defaultEvents = {
      *
      * @param {Event} event generated object with event data
      */
-    contextmenu: function ( event ) {
+    /*contextmenu: function ( event ) {
         //var kbEvent = {}; //Object.create(document.createEvent('KeyboardEvent'));
 
         //debug.event(event);
@@ -447,7 +447,7 @@ app.defaultEvents = {
             // disable right click in release mode
             event.preventDefault();
         }
-    },
+    },*/
 
     /**
      * The wheel event is fired when a wheel button of a pointing device (usually a mouse) is rotated.
