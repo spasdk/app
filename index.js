@@ -10,12 +10,12 @@
 var //Emitter = require('cjs-emitter'),
     //router  = require('spa-router'),
     //parse   = require('cjs-query').parse,
-    app     = require('./lib/core'),
-    events;
+    app    = require('./lib/core'),
+    events = require('./lib/events');
 
 
 // early return
-module.exports = app;
+//module.exports = app;
 
 
 // url request params
@@ -176,7 +176,7 @@ if ( DEVELOP ) {
 //     return false;
 // };
 
-app.route = require('./lib/route');
+//app.route = require('./lib/route');
 
 
 /*app.defaultEvents = {
@@ -490,10 +490,14 @@ app.route = require('./lib/route');
     }
 };*/
 
-events = require('./lib/events');
+//events = require('./lib/events');
 
 
-// apply events
+// apply DOM events
 Object.keys(events).forEach(function ( name ) {
     window.addEventListener(name, events[name]);
 });
+
+
+// public
+module.exports = app;
