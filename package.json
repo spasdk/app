@@ -16,6 +16,7 @@
         "jsdoc": "jsdoc --destination doc *.js readme.md"
     },
     "dependencies": {
+        "gremlins.js": "marmelab/gremlins.js",
         "cjs-emitter": "cjssdk/emitter",
         "cjs-query": "cjssdk/query"
     },
