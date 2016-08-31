@@ -18,7 +18,9 @@
     "dependencies": {
         "gremlins.js": "marmelab/gremlins.js",
         "cjs-emitter": "cjssdk/emitter",
-        "cjs-query": "cjssdk/query"
+        "cjs-query": "cjssdk/query",
+        "livereload-js": "2.*.*",
+        "spa-wamp": "spasdk/wamp"
     },
     "devDependencies": {
         "spa-eslint-config": "spasdk/eslint-config"
