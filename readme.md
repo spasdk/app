@@ -1,6 +1,7 @@
 Application core
 ================
 
+[![Build Status](https://img.shields.io/travis/spasdk/app.svg?style=flat-square)](https://travis-ci.org/spasdk/app)
 [![NPM version](https://img.shields.io/npm/v/spa-app.svg?style=flat-square)](https://www.npmjs.com/package/spa-app)
 [![Dependencies Status](https://img.shields.io/david/spasdk/app.svg?style=flat-square)](https://david-dm.org/spasdk/app)
 [![Gitter](https://img.shields.io/badge/gitter-join%20chat-blue.svg?style=flat-square)](https://gitter.im/DarkPark/spasdk)
