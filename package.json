@@ -12,20 +12,20 @@
     },
     "scripts": {
         "sass": "node-sass --indent-width 4 --include-path ../../.. sass/develop.scss css/develop.css && node-sass --indent-width 4 --include-path ../../.. sass/release.scss css/release.css",
-        "lint": "eslint *.js lib",
+        "lint": "eslint .",
         "test": "npm run lint",
         "jsdoc": "jsdoc --destination doc *.js readme.md"
     },
     "dependencies": {
-        "gremlins.js": "marmelab/gremlins.js",
         "cjs-emitter": "cjssdk/emitter",
         "cjs-query": "cjssdk/query",
+        "gremlins.js": "marmelab/gremlins.js",
         "livereload-js": "2.*.*",
         "spa-wamp": "spasdk/wamp"
     },
     "devDependencies": {
-        "spa-eslint-config": "spasdk/eslint-config",
-        "eslint": "2.*.*"
+        "eslint": "2.*.*",
+        "spa-eslint-config": "spasdk/eslint-config"
     },
     "keywords": [
         "spa",
