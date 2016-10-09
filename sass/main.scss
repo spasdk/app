@@ -27,6 +27,9 @@ table {
 .maxw { width:  100% }
 a { text-decoration: none; }
 
+.invisible {
+    visibility: hidden;
+}
 
 @if $DEVELOP {
     /* spa-app: develop */
