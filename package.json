@@ -18,7 +18,7 @@
     },
     "dependencies": {
         "cjs-emitter": "1.*.*",
-        "cjs-query": "cjssdk/query",
+        "cjs-query": "1.*.*",
         "gremlins.js": "marmelab/gremlins.js",
         "livereload-js": "2.*.*",
         "spa-wamp": "spasdk/wamp"
