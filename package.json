@@ -21,7 +21,7 @@
         "cjs-query": "1.*.*",
         "gremlins.js": "marmelab/gremlins.js",
         "livereload-js": "2.*.*",
-        "spa-wamp": "spasdk/wamp"
+        "spa-wamp": "1.*.*"
     },
     "devDependencies": {
         "eslint": "3.*.*",
