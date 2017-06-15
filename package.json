@@ -24,7 +24,7 @@
         "spa-wamp": "1.*.*"
     },
     "devDependencies": {
-        "eslint": "3.*.*",
+        "eslint": "4.*.*",
         "spa-eslint-config": "1.*.*"
     },
     "keywords": [
