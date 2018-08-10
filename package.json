@@ -19,7 +19,7 @@
     "dependencies": {
         "cjs-emitter": "^1.5.3",
         "cjs-query": "^1.5.1",
-        "gremlins.js": "marmelab/gremlins.js",
+        "gremlins.js": "github:marmelab/gremlins.js",
         "livereload-js": "^2.3.0",
         "spa-wamp": "^1.0.0"
     },
